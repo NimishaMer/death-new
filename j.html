@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ID 9 to 11 Products</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .product-card {
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .product-card h3 {
+            margin: 10px 0 5px;
+            font-size: 18px;
+        }
+
+        .product-card p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .product-card a {
+            display: inline-block;
+            margin-top: 10px;
+            background-color: black;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Filtered Products (ID 9 to 11)</h2>
+    <div class="container" id="productContainer"></div>
+
+    <script>
+        const data = {
+            "products": [
+                {
+                    "id": 1,
+                    "title": "Firefly Tankard",
+                    "image": "https://www.deathwishcoffee.com/cdn/shop/files/DeathWishCoffee_June2025_Product_Mug_Firefly_Front_Web.jpg?v=1750466977&width=533",
+                    "url": "https://www.deathwishcoffee.com/products/firefly-medallion-mug",
+                    "priceLabel": "$24.99",
+                    "rating": 4.8
+                },
+                {
+                    "id": 9,
+                    "title": "Firefly Tankard",
+                    "product_link": "https://www.deathwishcoffee.com/products/firefly-medallion-mug",
+                    "image_url": "https://www.deathwishcoffee.com/cdn/shop/files/DeathWishCoffee_June2025_Product_Mug_Firefly_Front_Web.jpg?v=1750466977&width=533",
+                    "regular_price": "$46.00",
+                    "sale_price": "$46.00",
+                    "unit_price": "/ per",
+                    "rating": 4.7,
+                    "reviews": 20,
+                    "availability": "Sold out"
+                },
+                {
+                    "id": 10,
+                    "title": "Get Away Camp Chair",
+                    "product_link": "https://www.deathwishcoffee.com/products/get-away-camp-chair",
+                    "image_url": "https://www.deathwishcoffee.com/cdn/shop/files/DeathWishCoffee_June2025_Product_CampChair_DWC_Front_Web2.jpg?v=1750789481&width=533",
+                    "regular_price": "$50.00",
+                    "sale_price": "$50.00",
+                    "unit_price": "/ per",
+                    "rating": 0.0,
+                    "reviews": 0,
+                    "availability": "Sold out"
+                },
+                {
+                    "id": 11,
+                    "title": "Firefly Camp Chair",
+                    "product_link": "https://www.deathwishcoffee.com/products/firefly-camp-chair",
+                    "image_url": "https://www.deathwishcoffee.com/cdn/shop/files/DeathWishCoffee_June2025_Product_CampChair_Firefly_Front_Web2.jpg?v=1750789374&width=533",
+                    "regular_price": "$50.00",
+                    "sale_price": "$50.00",
+                    "unit_price": "/ per",
+                    "rating": 0.0,
+                    "reviews": 0,
+                    "availability": "Sold out"
+                }
+            ]
+        };
+
+        const container = document.getElementById('productContainer');
+
+        const filtered = data.products.filter(p => p.id >= 9 && p.id <= 11);
+
+        filtered.forEach(product => {
+            container.innerHTML += `
+        <div class="product-card">
+          <img src="${product.image_url}" alt="${product.title}">
+          <h3>${product.title}</h3>
+          <p><strong>Regular Price:</strong> ${product.regular_price}</p>
+          <p><strong>Sale Price:</strong> ${product.sale_price}</p>
+          <p><strong>Rating:</strong> ${product.rating} ⭐</p>
+          <p><strong>Reviews:</strong> ${product.reviews}</p>
+          <p><strong>Status:</strong> ${product.availability}</p>
+          <a href="${product.product_link}" target="_blank">View Product</a>
+        </div>
+      `;
+        });
+    </script>
+
+</body>
+
+</html>

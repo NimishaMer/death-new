@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+
+
+
+    <!-- Remix Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+        integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+        }
+
+        header {
+            border-bottom: 3px solid red;
+            background-color: #000;
+            color: rgb(255, 255, 255);
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .main-header {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto;
+            align-items: center;
+            padding: 40px 40px;
+            position: relative;
+            background-color: #000;
+
+        }
+
+        /* Left Nav Links */
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-left: 150px;
+        }
+
+        .nav-left a,
+        .nav-right a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            transition: 0.3s ease;
+        }
+
+        .nav-left a:hover,
+        .nav-right a:hover {
+            color: red;
+        }
+
+        /* Logo Center */
+        .nav-center img {
+            height: 160px;
+            width: 160px;
+            object-fit: contain;
+
+            position: absolute;
+            left: 41%;
+            top: 1%;
+            z-index: 20;
+        }
+
+        /* Right Side Icons */
+        .icon {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-left: 20px;
+        }
+
+        .icon i {
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .icon i:hover {
+            color: red;
+        }
+
+        /* Cart Icon with Count */
+        .cart-icon {
+            position: relative;
+            display: inline-block;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: red;
+            color: rgb(255, 255, 255);
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        /* Dropdown Base */
+        .nav-item {
+            position: relative;
+
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 150%;
+            left: -66%;
+            width: 100vw;
+            color: #fff;
+            height: 0;
+            background-color: #000000;
+            overflow: hidden;
+            transition: height 0.4s ease;
+            z-index: 10;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+
+
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown1 {
+            position: absolute;
+            top: 100%;
+            left: -425px;
+            width: 100vw;
+            height: 0;
+            background-color: #000000;
+            overflow: hidden;
+            transition: height 0.4s ease;
+            z-index: 10;
+            overflow-y: scroll;
+        }
+
+
+        .dropdown2 {
+            position: absolute;
+            top: 100%;
+            left: -993px;
+            width: 100vw;
+            overflow: hidden;
+            height: 0;
+            background-color: #000000;
+            overflow: hidden;
+            transition: height 0.4s ease;
+            z-index: 10;
+            overflow-y: scroll;
+        }
+
+        /* Show Dropdown on Hover */
+        .nav-item:hover .dropdown {
+            height: 500px;
+            margin-top: 10px;
+        }
+
+        .nav-item:hover .dropdown1 {
+            height: 500px;
+        }
+
+        .nav-item:hover .dropdown2 {
+            height: 500px;
+        }
+
+        .coffee-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 50px 20px;
+            gap: 20px;
+        }
+
+        .coffee-card {
+            margin-top: 30px;
+            flex: 1 1 22%;
+            min-width: 200px;
+            text-align: left;
+        }
+
+        .coffee-card img {
+            width: 259px;
+            height: 259px;
+
+            object-fit: cover;
+        }
+
+        .coffee-card h2 {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 1px solid #fff;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .coffee-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .coffee-card ul li {
+            margin: 8px 0;
+        }
+
+        .coffee-card ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 13px;
+            /* font-family: 'Bebas Neue', sans-serif; */
+
+
+        }
+
+        .coffee-card ul li a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* Main layout for section */
+        .info-section {
+            display: flex;
+            justify-content: space-between;
+            padding: 100px 100px;
+            flex-wrap: wrap;
+            background-color: #000;
+            /* black background like screenshot */
+        }
+
+        /* Box style */
+        .info-box {
+            /* width: 30%; */
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Image */
+        .info-box img {
+            width: 259px;
+            height: 259px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: none;
+        }
+
+        /* Heading style */
+        .info-box h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #999;
+            background: linear-gradient(to right, #ffffff 50%, #ff0000 50%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* List and links */
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-box ul li {
+            margin: 10px 0;
+        }
+
+        .info-box ul li a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .info-box ul li a:hover {
+            color: #ff0000;
+        }
+
+        /* Section layout */
+        .info-section {
+            display: flex;
+            justify-content: space-between;
+            padding: 80px 100px;
+            flex-wrap: wrap;
+            background-color: #000;
+        }
+
+        /* Individual box */
+        .info-box {
+            width: 30%;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Image styling
+.info-box img {
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 0%;
+} */
+
+        /* Heading styling */
+        .info-box h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            border-bottom: 1px solid #999;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ffffff 50%, #ffffff 50%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* List styling */
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-box ul li {
+            margin: 10px 0;
+        }
+
+        .info-box ul li a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .info-box ul li a:hover {
+            color: #ff0000;
+        }
+
+
+
+        .offcanvas-header {
+            background-color: #000;
+        }
+
+        .offcanvas-body {
+            background-color: #000;
+            color: white;
+            padding: 20px;
+        }
+
+
+        #searchModal {
+            width: 1200px;
+        }
+
+        .modal-header {
+            width: 106%;
+            background-color: #000;
+        }
+
+        .modal-body {
+            background-color: #000;
+            width: 107%;
+        }
+
+        #search {
+            height: 30px;
+            width: 700px;
+            margin: auto;
+            border-radius: none;
+        }
+
+        body {
+            background-color: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+
+        }
+
+        .breadcrumb a:hover {
+            color: #ff0000;
+            text-decoration: underline;
+        }
+
+        .breadcrumb {
+            margin-top: 70px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            gap: 8px;
+        }
+
+        .filter-sort-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+
+            padding: 10px 0;
+        }
+
+        .filters,
+        .sort-products {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 16px;
+        }
+
+        .dropdown {
+            cursor: pointer;
+        }
+
+        .dropdown span {
+            font-size: 10px;
+            margin-left: 5px;
+        }
+
+        .product-count {
+            margin-left: 20px;
+        }
+
+        .filter-sort-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px 0;
+        }
+
+        .filters,
+        .sort-products {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 16px;
+        }
+
+        .dropdown {
+            cursor: pointer;
+        }
+
+        .dropdown span {
+            font-size: 10px;
+            margin-left: 5px;
+        }
+
+        .product-count {
+            margin-left: 20px;
+        }
+
+        .dropdown-container {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 30px;
+            background-color: #000;
+            border: 1px solid #444;
+            padding: 10px;
+            min-width: 200px;
+            z-index: 100;
+            box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-menu label {
+            display: block;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+
+        .dropdown-menu input[type="checkbox"] {
+            margin-right: 8px;
+            color: #ffffff;
+        }
+
+        .dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .chakbook2 {
+            color: white;
+            font-size: 14px;
+        }
+
+        .reset {
+            color: white;
+            text-decoration: underline;
+            font-size: 14px;
+        }
+
+        .stars {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 18px;
+        }
+
+
+
+
+        #productContainer {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            /* हर रो में 3 कार्ड */
+            gap: 20px;
+            padding: 20px;
+        }
+
+
+        .product-card {
+            background-color: #000;
+            color: #fff;
+
+            padding: 10px;
+            position: relative;
+
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .product-card h3 {
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .product-card p:nth-of-type(2),
+        .product-card p:nth-of-type(3) {
+            font-size: 1rem;
+            margin: 4px 0;
+        }
+
+
+        .stars {
+            display: flex;
+
+            justify-content: left;
+            gap: 5px;
+            margin: 8px 0;
+        }
+
+        .stars i {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .rating-number,
+        .rating-count {
+            font-weight: bold;
+        }
+
+        /* Availability */
+        .product-card p:last-of-type {
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+
+
+        .btn {
+
+            /* dark background */
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .edit-btn {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .edit-btn i {
+            color: white;
+        }
+
+        .product-card:hover .edit-btn {
+            opacity: 1;
+            pointer-events: auto;
+            border: 1px solid #ff0000;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            #productContainer {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            #productContainer {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        .newsletter-section {
+            background-color: #e12727;
+            /* red background */
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .newsletter-section h2 {
+            color: black;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 17px;
+        }
+
+        .newsletter-form {
+            display: inline-flex;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            height: 40px;
+            border: none;
+            font-size: 16px;
+            background-color: #ffffff;
+        }
+
+        .newsletter-form button {
+            background-color: black;
+            color: white;
+            height: 40px;
+            line-height: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #333;
+        }
+
+
+        /* footer uer */
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .footer {
+            background-color: #000;
+            padding: 40px 20px;
+            color: #ffffff;
+            width: 60%;
+            margin: auto;
+
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .footer-logo img {
+            width: 120px;
+        }
+
+        .footer-columns {
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            margin-top: 40px;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-icons a {
+            color: white;
+            margin-right: 15px;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="main-header">
+            <div class="nav-left">
+                <div class="nav-item">
+                    <a href="coffee.html">Coffee</a>
+                    <div class="dropdown">
+                        <section class="coffee-section">
+                            <div class="coffee-card">
+                                <img src="images/01.webp" alt="Subscribe & Save">
+                                <h2>SUBSCRIBE & SAVE</h2>
+                                <ul>
+                                    <li><a href="#">Start A Coffee Subscription</a></li>
+                                    <li><a href="#">Society Benefits</a></li>
+                                    <li><a href="#">Society Exclusive Merch</a></li>
+                                </ul>
+                            </div>
+                            <div class="coffee-card">
+                                <img src="images/02.webp" alt="Subscribe & Save">
+                                <h2>ORGANIC COFFEE</h2>
+                                <ul>
+                                    <li><a href="#">Light Roast</a></li>
+                                    <li><a href="#">Medium Roast</a></li>
+                                    <li><a href="#">Dark Roast</a></li>
+                                    <li><a href="#">Espresso Roast</a></li>
+                                    <li><a href="#">Valhalla Java Odinforce Blend</a></li>
+                                    <li><a href="#">Organic Coffee Bundles</a></li>
+                                </ul>
+                            </div>
+                            <div class="coffee-card">
+                                <img src="images/03.webp" alt="Subscribe & Save">
+                                <h2>FLAVORED COFFEE</h2>
+                                <ul>
+                                    <li><a href="#">Blueberry</a></li>
+                                    <li><a href="#">Chocolate Hazelnut</a></li>
+                                    <li><a href="#">Coconut Caramel</a></li>
+                                    <li><a href="#">Vanilla</a></li>
+                                    <li><a href="#">Flavored Coffee Bundles</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="coffee-card">
+                                <img src="images/04.webp" alt="Subscribe & Save">
+                                <h2>BREW FORMAT</h2>
+                                <ul>
+                                    <li><a href="#">Bagged</a></li>
+                                    <li><a href="#">Single-Serve Pods</a></li>
+                                    <li><a href="#">Espresso Capsules</a></li>
+                                    <li><a href="#">Instant</a></li>
+                                    <li><a href="#">Canned Lattes</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <a href="subscribe.html">Subscribe & Save</a>
+                <div class="nav-item">
+                    <a href="merch.html">Merch</a>
+                    <div class="dropdown1">
+                        <section class="info-section">
+                            <div class="info-box">
+                                <img src="images/2-1.webp" alt="All Merch">
+                                <h3>ALL MERCH</h3>
+                                <ul>
+                                    <li><a href="#">Apparel</a></li>
+                                    <li><a href="#">Accessories</a></li>
+                                    <li><a href="#">Mugs</a></li>
+                                    <li><a href="#">On-The-Go Drinkware</a></li>
+                                    <li><a href="#">Storage & Brewing</a></li>
+                                    <li><a href="#">Sale</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <img src="images/2-2.webp" alt="Gifting">
+                                <h3>GIFTING</h3>
+                                <ul>
+                                    <li><a href="#">Gift Cards</a></li>
+                                    <li><a href="#">Flavored Variety Packs</a></li>
+                                    <li><a href="#">Roast Variety Packs</a></li>
+                                </ul>
+                            </div>
+                            <div class="info-box">
+                                <img src="images/2-3.webp" alt="Society Exclusives">
+                                <h3>SOCIETY EXCLUSIVES</h3>
+                                <ul>
+                                    <li><a href="#">Society Exclusive Merch</a></li>
+                                    <li><a href="#">How To Join The Society</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <a href="index.html">
+                <div class="nav-center">
+                    <img src="images/death wish cofee.avif" alt="Logo" />
+                </div>
+            </a>
+
+            <div class="nav-right">
+                <a href="find-store.html">Find in Store</a>
+                <a href="blog.html">Blog</a>
+                <div class="nav-item">
+                    <a href="about.html">About</a>
+                    <div class="dropdown2">
+                        <section class="info-section">
+                            <div class="info-box">
+                                <img src="images/3-1.webp" alt="Coffee Subscription">
+                                <h3>COFFEE SUBSCRIPTION</h3>
+                                <ul>
+                                    <li><a href="#">Member-Only Benefits</a></li>
+                                    <li><a href="#">Start A Subscription</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <img src="images/3-2.webp" alt="Ritual Rewards">
+                                <h3>RITUAL REWARDS</h3>
+                                <ul>
+                                    <li><a href="#">How To Earn + Redeem</a></li>
+                                </ul>
+                            </div>
+                            <div class="info-box">
+                                <img src="images/3-3.webp" alt="Our Story">
+                                <h3>OUR STORY</h3>
+                                <ul>
+                                    <li><a href="#">History & Brand Values</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <div class="icon">
+                <a href="use.html"> <i class="ri-user-3-fill"></i></a>
+                <!-- ✅ Search Icon triggers modal -->
+                <i class="ri-search-2-fill" data-bs-toggle="modal" data-bs-target="#searchModal"
+                    style="cursor: pointer;"></i>
+                <div class="cart-icon">
+                    <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                        aria-controls="offcanvasRight"> <i class="ri-shopping-cart-2-fill"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ✅ Bootstrap 5 Search Modal (Full Width & No Top Gap) -->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl m-0"> <!-- m-0 removes margin -->
+            <div class="modal-content bg-dark text-white rounded-0"> <!-- rounded-0 for sharp edges -->
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control form-control-lg" id="search"
+                        placeholder="Search anything..." />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offcanvas -->
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">YOUR CART</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" id="cart-detail">
+            <!-- Cart items go here -->
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="index.html">Homepage</a> <span>></span>
+        <a href="#">Fair Trade & Organic Coffee</a> <span>></span>
+        <span>Fair Trade Certified Flavored Coffee</span>
+    </div>
+    <div class="filter-sort-bar">
+        <div class="filters">
+            <strong>FILTER:</strong>
+
+            <div class="dropdown-container">
+                <button class="dropdown-toggle">Type </button>
+                <div class="dropdown-menu">
+                    <div class="dropdown-header">
+                        <span>0 selected</span>
+                        <a href="#" class="reset">Reset</a>
+                    </div>
+                    <label><input type="checkbox" class="chakbook2"> <span>Mugs (9)</span></label>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="sort-products">
+            <strong>SORT BY:</strong>
+            <div class="dropdown">Featured </div>
+            <span class="product-count">5 of 13 Products</span>
+        </div>
+    </div>
+
+
+
+    <div class="container" id="productContainer">
+
+    </div>
+
+    <div class="newsletter-section">
+        <h2>LET'S DRINK COFFEE AND THROW THINGS AT HAPPY PEOPLE</h2>
+        <div class="newsletter-form">
+            <input type="email" placeholder="Enter Your Email Address" />
+            <button>SIGN ME UP</button>
+        </div>
+    </div>
+
+
+
+    <footer class="footer">
+        <div class="footer-container">
+            <a href="index.html">
+                <div class="footer-logo">
+                    <img src="images/death wish cofee.avif" alt="Death Wish Coffee Logo" />
+                </div>
+            </a>
+
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>COMPANY</h3>
+                    <ul>
+                        <li><a href="#">Help + FAQ</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Wholesale</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>ACCOUNTS + ORDERS</h3>
+                    <ul>
+                        <li><a href="#">Your Account</a></li>
+                        <li><a href="#">Shipping + Delivery</a></li>
+                        <li><a href="#">Subscription</a></li>
+                        <li><a href="#">Track Your Order</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>LEGAL</h3>
+                    <ul>
+                        <li><a href="#">Terms + Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">PROP 65</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025, Death Wish Coffee. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        const toggles = document.querySelectorAll('.dropdown-toggle');
+        const dropdowns = document.querySelectorAll('.dropdown-menu');
+        const resetLinks = document.querySelectorAll('.reset');
+
+        toggles.forEach((btn, i) => {
+            btn.addEventListener('click', () => {
+                dropdowns.forEach((d, j) => {
+                    if (i === j) {
+                        d.style.display = d.style.display === 'block' ? 'none' : 'block';
+                    } else {
+                        d.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        resetLinks.forEach((link, i) => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const checkboxes = dropdowns[i].querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(cb => cb.checked = false);
+                dropdowns[i].querySelector('.dropdown-header span').textContent = '0 selected';
+            });
+        });
+
+        dropdowns.forEach(menu => {
+            const checkboxes = menu.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const count = Array.from(checkboxes).filter(cb => cb.checked).length;
+                    menu.querySelector('.dropdown-header span').textContent = `${count} selected`;
+                });
+            });
+        });
+
+        // Close dropdowns if clicked outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown-container')) {
+                dropdowns.forEach(d => d.style.display = 'none');
+            }
+        });
+
+        const data = {
+            "products": [
+                {
+                    "id": 38,
+                    "title": "Coconut Caramel Coffee",
+                    "product_link": "https://www.deathwishcoffee.com/products/coconut-caramel-coffee",
+                    "image_url": "https://www.deathwishcoffee.com/cdn/shop/files/Coconut_Caramel_9oz_Ground_Angle_Cathedral_DTC_A3.jpg?v=1736261263&width=533",
+                    "regular_price": "$13.99",
+                    "rating": "4.7",
+                    "review_count": 266,
+                    "variants": [
+                        { "title": "1 bag", "price": "$13.99" },
+                        { "title": "2 bags", "price": "$27.98" },
+                        { "title": "5 bags", "price": "$69.95" }
+                    ]
+                },
+                {
+                    "id": 39,
+                    "title": "Coconut Caramel Single-Serve Pods",
+                    "product_link": "https://www.deathwishcoffee.com/products/coconut-caramel-single-serve-pods",
+                    "image_url": "https://www.deathwishcoffee.com/cdn/shop/files/Coconut_Caramel_10ct_Angle_Vertical_Pods_DTC_A3.jpg?v=1736261314&width=533",
+                    "regular_price": "$12.99",
+                    "rating": "4.7",
+                    "review_count": 128,
+                    "variants": [
+                        { "title": "10 count", "price": "$12.99" },
+                        { "title": "20 count", "price": "$25.98" },
+                        { "title": "30 count", "price": "$38.97" }
+                    ]
+                },
+                {
+                    "id": 40,
+                    "title": "Dark Roast Coffee",
+                    "product_link": "https://www.deathwishcoffee.com/products/death-wish-coffee",
+                    "image_url": "https://www.deathwishcoffee.com/cdn/shop/files/Dark_Roast_16oz_Ground_Angle_DTC_A4_2.jpg?v=1726752263&width=533",
+                    "regular_price": "$19.99",
+                    "rating": "4.8",
+
+                    "variants": []
+                },
+                {
+                    "id": 41,
+                    "title": "Coconut Caramel Coffee",
+                    "product_link": "https://www.deathwishcoffee.com/products/coconut-caramel-coffee",
+                    "image_url": "https://www.deathwishcoffee.com/cdn/shop/files/Coconut_Caramel_9oz_Ground_Angle_Cathedral_DTC_A3.jpg?v=1736261263&width=533",
+                    "regular_price": "$13.99",
+                    "rating": "4.7",
+                    "review_count": 266,
+                    "variants": [
+                        { "title": "1 bag", "price": "$13.99" },
+                        { "title": "2 bags", "price": "$27.98" },
+                        { "title": "5 bags", "price": "$69.95" }
+                    ]
+                },
+                {
+                    "id": 42,
+                    "title": "Coconut Caramel Single-Serve Pods",
+                    "product_link": "https://www.deathwishcoffee.com/products/coconut-caramel-single-serve-pods",
+                    "image_url": "https://www.deathwishcoffee.com/cdn/shop/files/Coconut_Caramel_10ct_Angle_Vertical_Pods_DTC_A3.jpg?v=1736261314&width=533",
+                    "regular_price": "$12.99",
+                    "rating": "4.7",
+                    "review_count": 128,
+                    "variants": [
+                        { "title": "10 count", "price": "$12.99" },
+                        { "title": "20 count", "price": "$25.98" },
+                        { "title": "30 count", "price": "$38.97" }
+                    ]
+                },
+                {
+                    "id": 43,
+                    "title": "Dark Roast Coffee",
+                    "product_link": "https://www.deathwishcoffee.com/products/death-wish-coffee",
+                    "image_url": "https://www.deathwishcoffee.com/cdn/shop/files/Dark_Roast_16oz_Ground_Angle_DTC_A4_2.jpg?v=1726752263&width=533",
+                    "regular_price": "$19.99",
+                    "rating": "4.8",
+
+                    "variants": []
+                },
+                {
+                    "id": 44,
+                    "title": "Coconut Caramel Coffee",
+                    "product_link": "https://www.deathwishcoffee.com/products/coconut-caramel-coffee",
+                    "image_url": "https://www.deathwishcoffee.com/cdn/shop/files/Coconut_Caramel_9oz_Ground_Angle_Cathedral_DTC_A3.jpg?v=1736261263&width=533",
+                    "regular_price": "$13.99",
+                    "rating": "4.7",
+                    "review_count": 266,
+                    "variants": [
+                        { "title": "1 bag", "price": "$13.99" },
+                        { "title": "2 bags", "price": "$27.98" },
+                        { "title": "5 bags", "price": "$69.95" }
+                    ]
+                },
+                {
+                    "id": 45,
+                    "title": "Coconut Caramel Single-Serve Pods",
+                    "product_link": "https://www.deathwishcoffee.com/products/coconut-caramel-single-serve-pods",
+                    "image_url": "https://www.deathwishcoffee.com/cdn/shop/files/Coconut_Caramel_10ct_Angle_Vertical_Pods_DTC_A3.jpg?v=1736261314&width=533",
+                    "regular_price": "$12.99",
+                    "rating": "4.7",
+                    "review_count": 128,
+                    "variants": [
+                        { "title": "10 count", "price": "$12.99" },
+                        { "title": "20 count", "price": "$25.98" },
+                        { "title": "30 count", "price": "$38.97" }
+                    ]
+                },
+                {
+                    "id": 46,
+                    "title": "Dark Roast Coffee",
+                    "product_link": "https://www.deathwishcoffee.com/products/death-wish-coffee",
+                    "image_url": "https://www.deathwishcoffee.com/cdn/shop/files/Dark_Roast_16oz_Ground_Angle_DTC_A4_2.jpg?v=1726752263&width=533",
+                    "regular_price": "$19.99",
+                    "rating": "4.8",
+                    "review_count": null,
+                    "variants": []
+                },
+                {
+                    "id": 47,
+                    "title": "Coconut Caramel Coffee",
+                    "product_link": "https://www.deathwishcoffee.com/products/coconut-caramel-coffee",
+                    "image_url": "https://www.deathwishcoffee.com/cdn/shop/files/Coconut_Caramel_9oz_Ground_Angle_Cathedral_DTC_A3.jpg?v=1736261263&width=533",
+                    "regular_price": "$13.99",
+                    "rating": "4.7",
+                    "review_count": 266,
+                    "variants": [
+                        { "title": "1 bag", "price": "$13.99" },
+                        { "title": "2 bags", "price": "$27.98" },
+                        { "title": "5 bags", "price": "$69.95" }
+                    ]
+                },
+                {
+                    "id": 48,
+                    "title": "Coconut Caramel Single-Serve Pods",
+                    "product_link": "https://www.deathwishcoffee.com/products/coconut-caramel-single-serve-pods",
+                    "image_url": "https://www.deathwishcoffee.com/cdn/shop/files/Coconut_Caramel_10ct_Angle_Vertical_Pods_DTC_A3.jpg?v=1736261314&width=533",
+                    "regular_price": "$12.99",
+                    "rating": "4.7",
+                    "review_count": 128,
+                    "variants": [
+                        { "title": "10 count", "price": "$12.99" },
+                        { "title": "20 count", "price": "$25.98" },
+                        { "title": "30 count", "price": "$38.97" }
+                    ]
+                },
+                {
+                    "id": 49,
+                    "title": "Dark Roast Coffee",
+                    "product_link": "https://www.deathwishcoffee.com/products/death-wish-coffee",
+                    "image_url": "https://www.deathwishcoffee.com/cdn/shop/files/Dark_Roast_16oz_Ground_Angle_DTC_A4_2.jpg?v=1726752263&width=533",
+                    "regular_price": "$19.99",
+                    "rating": "4.8",
+                    "variants": []
+                }
+
+            ]
+        };
+
+        const container = document.getElementById('productContainer');
+        let html = '';
+
+        data.products.forEach(product => {
+            const rating = parseFloat(product.rating) || 0;
+            const ratingCount = product.review_count || 0;
+            const priceLabel = product.regular_price || "$0.00";
+
+            const card = `
+        <div class="product-card">
+          <img src="${product.image_url}" alt="${product.title}">
+          <h3>${product.title}</h3>
+          <p><strong>Price:</strong> ${priceLabel}</p>
+          <div class="stars">
+            ${getStars(rating)}
+            <span class="rating-number">${rating.toFixed(1)}</span>
+            <span class="rating-count">(${ratingCount})</span>
+          </div>
+          <div class="edit-btn">
+            <button class="btn btn-sm" data-id="${product.id}">ADD TO CART <i class="ri-shopping-cart-2-line"></i></button>
+          </div>
+        </div>
+      `;
+            html += card;
+        });
+
+        container.innerHTML = html;
+
+        // Add to cart functionality
+        document.querySelectorAll('.btn-sm').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const id = this.getAttribute('data-id');
+                const product = data.products.find(p => p.id == id);
+                const priceLabel = product.regular_price || "$0.00";
+                const rating = parseFloat(product.rating) || 0;
+                const ratingCount = product.review_count || 0;
+
+                addToCart({
+                    id: product.id,
+                    title: product.title,
+                    image: product.image_url,
+                    priceLabel: priceLabel,
+                    category: "Mug",
+                    price: parseFloat(priceLabel.replace("$", "")),
+                    rating: rating,
+                    ratingCount: ratingCount
+                });
+            });
+        });
+
+        function addToCart(item) {
+            console.log("Added to cart:", item);
+            alert(`${item.title} added to cart!`);
+        }
+
+        function getStars(rating) {
+            const fullStars = Math.floor(rating);
+            const halfStar = rating % 1 >= 0.5;
+            const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+            let starsHtml = '';
+
+            for (let i = 0; i < fullStars; i++) {
+                starsHtml += '<i class="ri-star-fill"></i>';
+            }
+            if (halfStar) {
+                starsHtml += '<i class="ri-star-half-fill"></i>';
+            }
+            for (let i = 0; i < emptyStars; i++) {
+                starsHtml += '<i class="ri-star-line"></i>';
+            }
+
+            return starsHtml;
+        }
+    </script>
+</body>
+
+</html>

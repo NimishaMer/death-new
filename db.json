@@ -1,0 +1,68 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "title": "Firefly Tankard",
+            "image": "https://www.deathwishcoffee.com/cdn/shop/files/DeathWishCoffee_June2025_Product_Mug_Firefly_Front_Web.jpg?v=1750466977&width=533",
+            "url": "https://www.deathwishcoffee.com/products/firefly-medallion-mug",
+            "priceLabel": "$24.99",
+            "rating": 4.8
+        },
+        {
+            "id": 2,
+            "title": "Glow to Hell Frisbee",
+            "image": "https://www.deathwishcoffee.com/cdn/shop/files/DeathWishCoffee_June2025_Product_Frisbee_Front_Web.jpg?v=1750392136&width=533",
+            "url": "https://www.deathwishcoffee.com/products/glow-to-hell-frisbee",
+            "priceLabel": "$19.99",
+            "rating": 4.2
+        },
+        {
+            "id": 3,
+            "title": "Brewed for Thought",
+            "image": "https://www.deathwishcoffee.com/cdn/shop/files/DeathWishCoffee_June2025_Product_Journal_Black_Front_Web.jpg?v=1750356261&width=533",
+            "url": "https://www.deathwishcoffee.com/products/brewed-for-thought-journal",
+            "priceLabel": "$49.99",
+            "rating": 3.9
+        },
+        {
+            "id": 4,
+            "title": "Griller Instinct ",
+            "image": "https://www.deathwishcoffee.com/cdn/shop/files/DeathWishCoffee_June2025_Product_Spatual_Front_Web.jpg?v=1748976802&width=533",
+            "url": "https://www.deathwishcoffee.com/products/brewed-for-thought-journal",
+            "priceLabel": "$30.00",
+            "rating": 4.5
+        },
+        {
+            "id": 5,
+            "title": "Pit Boss Apron",
+            "image": "https://www.deathwishcoffee.com/cdn/shop/files/DeathWishCoffee_June2025_Product_Apron_Front_Web.jpg?v=1748976637&width=533",
+            "url": "https://www.deathwishcoffee.com/products/pit-boss-apron",
+            "priceLabel": "$32.00",
+            "rating": 4.5
+        },
+        {
+            "id": 6,
+            "title": "Coffee Rules ",
+            "image": "https://www.deathwishcoffee.com/cdn/shop/files/DeathWishCoffee_June2025_Product_WALLET_Front_Web.jpg?v=1748976717&width=533",
+            "url": "https://www.deathwishcoffee.com/products/coffee-rules-leather-wallet",
+            "priceLabel": "$15.00",
+            "rating": 4.7
+        },
+        {
+            "id": 7,
+            "title": "Rosie the Riveter ",
+            "image": "https://www.deathwishcoffee.com/cdn/shop/files/DeathWishCoffee_May2025_Product_Mug_RosieTheRiveter_Front_Web.jpg?v=1746711175&width=533",
+            "url": "https://www.deathwishcoffee.com/products/rosie-the-riveter-resurrected-relic",
+            "priceLabel": "$38.00",
+            "rating": 3.0
+        },
+        {
+            "id": 8,
+            "title": "Original Slim Can Koozie",
+            "image": "https://www.deathwishcoffee.com/cdn/shop/files/DeathWishCoffee_February2025_Koozie_Original_Front_Web.jpg?v=1747160044&width=533",
+            "url": "https://www.deathwishcoffee.com/products/original-slim-can-koozie",
+            "priceLabel": "$6.00",
+            "rating": 4.5
+        }
+    ]
+}
