@@ -3,9 +3,10 @@ const cartItems = {};
 
 // Fetch and render cards
 function detafrtch() {
-  fetch(`http://localhost:3000/products`)
+  // Use static db.json for both local and production
+  fetch('./db.json')
     .then((res) => res.json())
-    .then((deta) => renderCard(deta))
+    .then((data) => renderCard(data.products))
     .catch((err) => console.log(err));
 }
 detafrtch();
