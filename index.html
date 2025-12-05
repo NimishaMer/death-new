@@ -39,6 +39,9 @@
 
     <header>
         <div class="main-header">
+            <div class="hamburger-menu">
+                <i class="fa fa-bars"></i>
+            </div>
             <div class="nav-left">
                 <div class="nav-item">
                     <a href="coffee.html">Coffee</a>
@@ -189,6 +192,60 @@
         </div>
     </header>
 
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="nav-center">
+                <img src="images/death wish cofee.avif" alt="Logo" style="height: 60px; width: 60px; object-fit: contain;" />
+            </div>
+            <div class="mobile-nav-close" id="mobileNavClose">
+                <i class="fa fa-times"></i>
+            </div>
+        </div>
+        <div class="mobile-nav-content">
+            <div class="mobile-nav-item">
+                <a href="coffee.html">Coffee</a>
+                <div class="mobile-nav-submenu">
+                    <a href="#">Subscribe & Save</a>
+                    <a href="#">Organic Coffee</a>
+                    <a href="#">Flavored Coffee</a>
+                    <a href="#">Brew Format</a>
+                </div>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="subscribe.html">Subscribe & Save</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="merch.html">Merch</a>
+                <div class="mobile-nav-submenu">
+                    <a href="#">Apparel</a>
+                    <a href="#">Accessories</a>
+                    <a href="#">Mugs</a>
+                    <a href="#">On-The-Go Drinkware</a>
+                    <a href="#">Storage & Brewing</a>
+                    <a href="#">Sale</a>
+                </div>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="find-store.html">Find in Store</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="blog.html">Blog</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="about.html">About</a>
+                <div class="mobile-nav-submenu">
+                    <a href="#">Coffee Subscription</a>
+                    <a href="#">Ritual Rewards</a>
+                    <a href="#">Our Story</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation Backdrop -->
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+
     <div class="section1" style="background-color: aliceblue; height: 500px; width: 100%;">
 
 
@@ -241,6 +298,39 @@
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="slick-1.8.1/slick-1.8.1/slick/slick.min.js"></script>
 
+    <!-- Mobile Navigation JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileNavClose = document.getElementById('mobileNavClose');
+            const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+
+            // Open mobile navigation
+            hamburgerMenu.addEventListener('click', function() {
+                mobileNav.classList.add('active');
+                mobileNavBackdrop.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent body scroll
+            });
+
+            // Close mobile navigation
+            function closeMobileNav() {
+                mobileNav.classList.remove('active');
+                mobileNavBackdrop.classList.remove('active');
+                document.body.style.overflow = ''; // Restore body scroll
+            }
+
+            mobileNavClose.addEventListener('click', closeMobileNav);
+            mobileNavBackdrop.addEventListener('click', closeMobileNav);
+
+            // Close on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                    closeMobileNav();
+                }
+            });
+        });
+    </script>
 
     <script type="text/javascript">
 
